@@ -3,7 +3,7 @@
 taskkill /im MAAB.RestApi.vshost.exe
 taskkill /im MAAB.RestApi.exe
 
-setx PATH "%PATH%;%ProgramFiles%\MySQL\MySQL Server 5.5\bin"
+
 
 cls
 echo Bem-vindo %USERNAME%, o que voce deseja?
