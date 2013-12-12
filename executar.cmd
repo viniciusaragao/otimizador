@@ -7,7 +7,7 @@ cls
 echo Bem-vindo %USERNAME%, o que voce deseja?
 echo ....
 echo .... Para mais de um convenio, separe os numero com espaco
-echo .... Para todos não digite nada, apenas tecle ENTER
+echo .... Para todos nao digite nada, apenas tecle ENTER
 echo ....
 echo 0     - PLANJUS
 echo 1     - ABEPOM
