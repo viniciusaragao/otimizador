@@ -4,19 +4,8 @@ taskkill /im MAAB.RestApi.vshost.exe
 taskkill /im MAAB.RestApi.exe
 
 
-
 cls
 echo Bem-vindo %USERNAME%, o que voce deseja?
-echo .... Para mais de um convenio, separe os numero com espaco
-echo .... Para todos nao digite nada, apenas tecle ENTER
-echo ....
-echo 0     - PLANJUS
-echo 1     - ABEPOM
-echo 2     - MONGERAL
-echo 3     - JUSPREV
-echo ENTER - TODOS
-
-set /p Convenio=Digite os diretorios a ser carregado:%=%
 
 
 FOR /D %%p IN ("C:\MaabDBs\*.*") DO rmdir "%%p" /s /q
@@ -34,6 +23,6 @@ ping -n 10 127.0.0.1 > NUL
 
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\CargaDeDadosAPI.csproj" /property:Configuration=Debug /t:rebuild
 
-start "Carga" "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug\CargaDeDadosAPI.exe"  %Convenio% -%GLOBAL%
+start "Carga" "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug\CargaDeDadosAPI.exe"
 
 chcp %cp%>nul
