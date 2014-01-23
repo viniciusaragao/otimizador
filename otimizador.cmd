@@ -14,7 +14,6 @@ copy "%~dp0\MAAB.RestApi\MAAB.RestApi\ArquivosDefault\global.db" "C:\MaabDBs\Glo
 C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "%~dp0\MAAB.RestApi\MAAB.RestApi.sln" /property:Configuration=Debug /t:rebuild
 start "API" "%~dp0\MAAB.RestApi\MAAB.RestApi\bin\Debug\MAAB.RestApi.exe"
 
-
 echo ----------------------------[AGUARDANDO A API]-------------------------------
 
 ping -n 10 127.0.0.1 > NUL
