@@ -3,7 +3,6 @@
 taskkill /im MAAB.RestApi.vshost.exe
 taskkill /im MAAB.RestApi.exe
 
-
 cls
 echo Bem-vindo %USERNAME%, o que voce deseja?
 
