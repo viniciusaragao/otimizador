@@ -6,7 +6,6 @@ taskkill /im MAAB.RestApi.exe
 cls
 echo Bem-vindo %USERNAME%, o que voce deseja?
 
-
 FOR /D %%p IN ("C:\MaabDBs\*.*") DO rmdir "%%p" /s /q
 
 mkdir C:\MaabDBs\Global
