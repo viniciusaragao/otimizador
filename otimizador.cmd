@@ -19,7 +19,8 @@ cd "%~dp0\MAAB.RestApi\MAAB.RestApi\bin\Debug"
 
 start "MAAB.RestApi" "%~dp0\MAAB.RestApi\MAAB.RestApi\bin\Debug\MAAB.RestApi.exe"
  
-cd "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug" "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug\CargaDeDadosAPI.exe"
+cd "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug" 
+start "Carga de dados" "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug\CargaDeDadosAPI.exe"
  
 taskkill /F /im ExecutadorDeProcessosEmFila.exe
 taskkill /F /im ExecutadorDeObservadoresEmFila.exe
