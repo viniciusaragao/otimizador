@@ -1,25 +1,28 @@
-@echo off
-
-taskkill /im MAAB.RestApi.vshost.exe
-taskkill /im MAAB.RestApi.exe
-
-cls
-echo Bem-vindo %USERNAME%, o que voce deseja?
-
+taskkill /F /im ExecutadorDeProcessosEmFila.exe
+taskkill /F /im ExecutadorDeObservadoresEmFila.exe
+taskkill /F /im MAAB.RestApi.exe
+ 
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "%~dp0\MAAB.RestApi\MAAB.RestApi.sln" /t:Rebuild /p:Configuration=Debug
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\CargaDeDadosAPI.csproj" /t:Rebuild /p:Configuration=Debug
+ 
 FOR /D %%p IN ("C:\MaabDBs\*.*") DO rmdir "%%p" /s /q
-
+ 
 mkdir C:\MaabDBs\Global
+ 
 copy "%~dp0\MAAB.RestApi\MAAB.RestApi\ArquivosDefault\global.db" "C:\MaabDBs\Global\global.db"
+ 
+D:
+cd "%~dp0\MAAB.RestApi\MAAB.MQ\bin\Debug"
+start "MAAB.MQ" "%~dp0\MAAB.RestApi\MAAB.MQ\bin\Debug\MAAB.MQ.exe"
+ 
+cd "%~dp0\MAAB.RestApi\MAAB.RestApi\bin\Debug" 
 
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "%~dp0\MAAB.RestApi\MAAB.RestApi.sln" /property:Configuration=Debug /t:rebuild
-start "API" "%~dp0\MAAB.RestApi\MAAB.RestApi\bin\Debug\MAAB.RestApi.exe"
-
-echo ----------------------------[AGUARDANDO A API]-------------------------------
-
-ping -n 10 127.0.0.1 > NUL
-
-C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\CargaDeDadosAPI.csproj" /property:Configuration=Debug /t:rebuild
-
-start "Carga" "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug\CargaDeDadosAPI.exe"
-
-chcp %cp%>nul
+start "MAAB.RestApi" "%~dp0\MAAB.RestApi\MAAB.RestApi\bin\Debug\MAAB.RestApi.exe"
+ 
+cd "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug" "%~dp0\MAAB.TestesAceitacao\CargaDeDadosAPI\bin\Debug\CargaDeDadosAPI.exe"
+ 
+taskkill /F /im ExecutadorDeProcessosEmFila.exe
+taskkill /F /im ExecutadorDeObservadoresEmFila.exe
+taskkill /F /im MAAB.RestApi.exe
+cd "%~dp0\MAAB.RestApi\MAAB.RestApi\bin\Debug"
+start "MAAB.RestApi" "%~dp0\MAAB.RestApi\MAAB.RestApi\bin\Debug\MAAB.RestApi.exe"
